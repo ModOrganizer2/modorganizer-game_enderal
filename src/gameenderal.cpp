@@ -68,12 +68,9 @@ QString GameEnderal::gameName() const
 QList<ExecutableInfo> GameEnderal::executables() const
 {
   return QList<ExecutableInfo>()
-      //<< ExecutableInfo("SKSE", findInGameFolder(feature<ScriptExtender>()->loaderName()))
-      //<< ExecutableInfo("SBW", findInGameFolder("SBW.exe"))
       << ExecutableInfo("Enderal (SKSE)", findInGameFolder(binaryName()))
       << ExecutableInfo("Enderal Launcher", findInGameFolder(getLauncherName()))
-      << ExecutableInfo("BOSS", findInGameFolder("BOSS/BOSS.exe"))
-      //<< ExecutableInfo("LOOT", getLootPath()).withArgument("--game=\"Skyrim\"")
+      << ExecutableInfo("LOOT", getLootPath()).withArgument("--game=\"Enderal\"")
       << ExecutableInfo("Creation Kit", findInGameFolder("CreationKit.exe")).withSteamAppId("202480")
   ;
 }
@@ -170,7 +167,7 @@ QString GameEnderal::steamAPPId() const
 
 MOBase::IPluginGame::SortMechanism GameEnderal::sortMechanism() const
 {
-  return SortMechanism::NONE;
+  return SortMechanism::LOOT;
 }
 
 QStringList GameEnderal::primaryPlugins() const
